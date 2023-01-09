@@ -531,6 +531,64 @@
   autoPlay: true
 });
     </script>  
+	<!-- Pick the Current Date and Default night 1 -->
+		<script type="text/javascript">
+				var checkin_init = 0;
+				// How many days from today calendar initiates
+				var checkout_day = 1;
+				// Minimum stay (number of nights)
+				var form_dateformat = 'yy-mm-dd'; // Date format (is used only to website form)
+					
+					$(function() 	{
+			    	var newDate = new Date();
+	                newDate.setDate( new Date().getDate() + checkin_init );
+			        $('#arrival').datepicker({
+			            dateFormat: form_dateformat,
+			            beforeShowDay: function(date) {
+
+			                var currentDate = newDate;
+			                currentDate.setHours(0);
+			                currentDate.setMinutes(0);
+			                currentDate.setSeconds(0);
+			                currentDate.setMilliseconds(0);
+			                if (date >= currentDate) {
+			                    return [true, ''];
+			                }
+			                else {
+			                    return [false, ''];
+			                }
+			            },
+			            onSelect: function(dateText, inst) {
+			                var nextDay = $('#arrival').datepicker('getDate');
+			                nextDay.setDate(nextDay.getDate() + checkout_day );
+			                var depart = $('#departure').datepicker('getDate');
+			                $('#departure').val($.datepicker.formatDate(form_dateformat, nextDay));
+			            }
+			        }).val($.datepicker.formatDate(form_dateformat, newDate));
+			        var nextDay = $('#arrival').datepicker('getDate');
+			        nextDay.setDate(nextDay.getDate() + checkout_day);
+			        $('#departure').datepicker({
+			            dateFormat: form_dateformat,
+			            beforeShowDay: function(date) {
+			                var nextDay = $('#arrival').datepicker('getDate');
+			                nextDay.setDate(nextDay.getDate() + checkout_day );
+			                nextDay.setHours(0);
+			                nextDay.setMinutes(0);
+			                nextDay.setSeconds(0);
+			                nextDay.setMilliseconds(0);
+
+			                if (date >= nextDay) {
+			                    return [true, ''];
+			                }
+			                else {
+			                    return [false, ''];
+			                }
+			            }
+			        }).val($.datepicker.formatDate(form_dateformat, nextDay));
+					});
+					
+</script>
+
 </body>
 
 </html>
