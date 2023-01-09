@@ -6,6 +6,7 @@
 	$rooms = $_POST['rooms'];
 	$numberofpeople = $_POST['number'];
 	$contact = $_POST['contact'];
+	$submit = $_POST['submit']
 
 
 	// Database connection
