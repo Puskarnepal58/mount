@@ -9,7 +9,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="images/Logo.png">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> @milanshrestha -->
 
     <!-- Bootstrap 5 CDN Links -->
     <link rel="dns-prefetch" href="//use.fontawesome.com">
@@ -26,12 +26,19 @@
 
 
     <!-- -- Bootstrap 4 CDN Links -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"> @milanshrestha -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    
+	
+	<!-- Jquery Stylesheet @milanshrestha -->
+<link href="https://code.jquery.com/ui/1.7.3/themes/blitzer/jquery-ui.css" media="screen" rel="stylesheet" type="text/css">
+<!-- Jquery Stylesheet -->
 
-
-
+    <!-- Jquery Javascript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Jquery Javascript -->
+	
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
@@ -120,8 +127,16 @@
                                     <div class="date" id="date1" data-target-input="nearest">
 									<div class="form-group">
                                         <label class="formGroupExampleInput">Check-In Date</label>
-                                        <input type="date" class="form-control datetimepicker-input"
-                                            placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
+                                        <input
+										style= "cursor:pointer"
+										autofocus=""
+										type="text"
+										id="arrival"
+										name="arrival"
+										class="datepicker form-control"
+                                        placeholder=""
+										value=""
+										 />
                                     </div>
 									</div>
                                 </div>
@@ -129,8 +144,16 @@
                                     <div class="date" id="date2" data-target-input="nearest">
 									<div class="form-group">
                                         <label class="formGroupExampleInput">Check-Out Date</label>
-                                        <input type="date" class="form-control datetimepicker-input"
-                                            placeholder="Check out" data-target="#date2" data-toggle="datetimepicker" />
+                                        <input
+										style= "cursor:pointer"
+										autofocus=""
+										type="text"
+										id="departure"
+										name="departure"
+										class="datepicker form-control "
+                                        placeholder=""
+										value=""
+											/>
                                     </div>
 									</div>
                                 </div>
@@ -510,7 +533,7 @@
             <a href="https://www.sait.com.np/">
                 <!-- <span class="logo">
           <img src="images/S.A I.T Logo. Png.png" >
-        </span> --> SAIT Solutions and Trade Concern
+        </span> --> SA IT Solutions and Trade Concern
             </a>
         </span>
     </section>
@@ -518,21 +541,22 @@
 
     <!-- Bootstrap 5 JS CDN Links -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script> -->
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- Custom Js Link -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+	<!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script> -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="main.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> 
     <script type="text/javascript">
@@ -544,7 +568,7 @@
 });
     </script>  
 	<!-- Pick the Current Date and Default night 1 -->
-		<script type="text/javascript">
+<script type="text/javascript">
 				var checkin_init = 0;
 				// How many days from today calendar initiates
 				var checkout_day = 1;
@@ -598,8 +622,7 @@
 			            }
 			        }).val($.datepicker.formatDate(form_dateformat, nextDay));
 					});
-					});
-					
+										
 </script>
 
 </body>
