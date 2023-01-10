@@ -1,4 +1,7 @@
-/* 1 General */
+/* 1 General 
+	Site:  https://www.mountviewpokhara
+	Designed by https://www.sait.com.np
+*/
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -68,7 +71,7 @@ section {
 .main-btn:hover {
   background-color: #3F84E5;
   border-color: var(--secondary-color);
-  color: #FF7F11;
+  color: #DDD;
   text-decoration: none;
 }
 
@@ -189,7 +192,7 @@ p {
 
 .header_wrapper .nav-item .nav-link.active,
 .header_wrapper .nav-item .nav-link:hover {
-  color: #FF7F11;
+  color: #dddddd;
   text-transform: none;
 }
 
