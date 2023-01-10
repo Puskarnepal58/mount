@@ -605,12 +605,12 @@ p {
 .footer .install img {
   margin: 10px 0 15px 0;
 }
-
+/*
 .footer .follow i:hover,
 .footer a:hover {
   color: #3F84E5;
 }
-
+*/
 .divider {
   height: 2px;
   width: 100%;
@@ -645,7 +645,6 @@ p {
 }
 
 .copyright a {
-  text-decoration: underline;
   color: #dddddd;
   font-size: 1rem;
 }
@@ -655,11 +654,11 @@ p {
   color: #dddddd;
   font-size: 1rem;
 }
-
+ /*
 .copyright a:hover {
   color: #FF7F11;
 }
-
+*/
 
 
 @media (max-width: 1199px) {
