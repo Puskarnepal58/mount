@@ -6,6 +6,7 @@
 	$rooms = $_POST['rooms'];
 	$numberofpeople = $_POST['number'];
 	$contact = $_POST['contact'];
+	$submit = $_POST['submit'];
 
 
 	// Database connection
@@ -18,6 +19,7 @@
 		$stmt = $conn->prepare("insert into booking(name, email, checkinDate, checkoutDate, rooms, numberofpeople, contact) values(?, ?, ?, ?, ?, ?,?)");
 		$stmt->bind_param("ssssssi", $name, $email, $checkinDate, $checkoutDate, $rooms, $numberofpeople, $contact);
 		$execval = $stmt->execute();
+		if($execval == true)
 		// echo $execval;
 		echo "Registration completed successfully...<br>Our staff will connect with you shortly.";
 		header('location:thankyou.html');
