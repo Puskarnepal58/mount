@@ -10,7 +10,7 @@
 	<meta name="description" content="Situated in the heart of the township of Pokhara, one of the most coveted destinations for the globetrotters, Hotel Mount View Pokhara is a newly established hotel facilitated with all kinds of hospitality services of international standard with local touch">
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="images/mountviewpokhara-logo.png">
+    <link rel="icon" type="image/png" href="images/Logo.png">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> @milanshrestha -->
 
@@ -139,8 +139,8 @@
 										style= "cursor:pointer"
 										autofocus=""
 										type="text"
-										id="arrival"
-										name="arrival"
+										id="checkindate"
+										name="checkindate"
 										class="datepicker form-control"
                                         placeholder=""
 										value=""
@@ -156,8 +156,8 @@
 										style= "cursor:pointer"
 										autofocus=""
 										type="text"
-										id="departure"
-										name="departure"
+										id="checkoutdate"
+										name="checkoutdate"
 										class="datepicker form-control "
                                         placeholder=""
 										value=""
@@ -168,7 +168,7 @@
                                 <div class="col-md-3 col-md-auto">
 								<div class="form-group">
                                     <label class="formGroupExampleInput">No. of Adults</label>
-                                    <select class="form-select">
+                                    <select class="form-select" type="number" id="adults" name="adults">
                                         <!-- <option selected>Adult</option> -->
                                         <option selected="selected" value="1"> 1</option>
                                         <option value="2"> 2</option>
@@ -177,9 +177,9 @@
 									</div>
                                 </div>
                                 <div class="col-md-3 col-md-auto">
-								<div class="form-group">
+								<div class="form-group" >
                                     <label class="formGroupExampleInput">No. of Children</label>
-                                    <select class="form-select">
+                                    <select class="form-select" type="number" id="children" name="children">
                                         <!-- <option selected>Child</option> -->
                                         <option selected="selected" value="0"> 0</option>
 										<option value="1"> 1</option>
@@ -194,7 +194,7 @@
                             <label><br></label>
                             <!-- <a href="#"><button class="btn btn-primary w-100">Submit</button></a> -->
                             <!-- <a href="booking.html"></a> -->
-							<input type="submit" name="submit" class="btn btn-primary main-btn rounded-2 px-lg-3" value="Check Availability"></input>
+							<input type="submit" name="submit" onclick="storeDates()" class="btn btn-primary main-btn rounded-2 px-lg-3" value="Check Availability"></input>
                         </div>
 						</div>
                     </div>
@@ -563,7 +563,7 @@
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script> @milanshrestha -->
 
-<!-- What is this code -->
+<!-- flickity crousel Initialize with jQuery -->
 		<script type="text/javascript">
 			$('.main-carousel').flickity({
 			  cellAlign: 'left',
@@ -583,7 +583,7 @@
 					$(function() 	{
 			    	var newDate = new Date();
 	                newDate.setDate( new Date().getDate() + checkin_init );
-			        $('#arrival').datepicker({
+			        $('#checkindate').datepicker({
 			            dateFormat: form_dateformat,
 			            beforeShowDay: function(date) {
 
@@ -600,18 +600,18 @@
 			                }
 			            },
 			            onSelect: function(dateText, inst) {
-			                var nextDay = $('#arrival').datepicker('getDate');
+			                var nextDay = $('#checkindate').datepicker('getDate');
 			                nextDay.setDate(nextDay.getDate() + checkout_day );
-			                var depart = $('#departure').datepicker('getDate');
-			                $('#departure').val($.datepicker.formatDate(form_dateformat, nextDay));
+			                var depart = $('#checkoutdate').datepicker('getDate');
+			                $('#checkoutdate').val($.datepicker.formatDate(form_dateformat, nextDay));
 			            }
 			        }).val($.datepicker.formatDate(form_dateformat, newDate));
-			        var nextDay = $('#arrival').datepicker('getDate');
+			        var nextDay = $('#checkindate').datepicker('getDate');
 			        nextDay.setDate(nextDay.getDate() + checkout_day);
-			        $('#departure').datepicker({
+			        $('#checkoutdate').datepicker({
 			            dateFormat: form_dateformat,
 			            beforeShowDay: function(date) {
-			                var nextDay = $('#arrival').datepicker('getDate');
+			                var nextDay = $('#checkindate').datepicker('getDate');
 			                nextDay.setDate(nextDay.getDate() + checkout_day );
 			                nextDay.setHours(0);
 			                nextDay.setMinutes(0);
@@ -628,5 +628,22 @@
 			        }).val($.datepicker.formatDate(form_dateformat, nextDay));
 					});
 </script>
+<!-- Stores data and send to booking page -->
+<script>
+    function storeDates() {
+      var checkindate = document.getElementById("checkindate").value;
+      var checkoutdate = document.getElementById("checkoutdate").value;
+      var adults = document.getElementById("adults").value;
+      var children = document.getElementById("children").value;      
+      var totalPeople = parseInt(adults) + parseInt(children);
+      
+      sessionStorage.setItem("checkindate", checkindate);
+      sessionStorage.setItem("checkoutdate", checkoutdate);
+      sessionStorage.setItem("adults", adults);
+      sessionStorage.setItem("children", children);
+      sessionStorage.setItem("totalPeople", totalPeople);
+
+    }
+  </script>
 
 </html>
